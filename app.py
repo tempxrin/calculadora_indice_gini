@@ -13,7 +13,7 @@ st.header("1. Configuração dos Dados")
 
 option = st.radio(
     "Como deseja inserir os dados?",
-    ["Usar dados de exemplo", "Inserir manualmente", "Upload de arquivo"]
+    ["Usar dados de exemplo", "Upload de arquivo"]
 )
 
 df = None
@@ -34,18 +34,6 @@ if option == "Usar dados de exemplo":
     np.random.shuffle(rendas_exemplo)
     
     df = pd.DataFrame({'Renda': rendas_exemplo})
-    
-elif option == "Inserir manualmente":
-    st.subheader("Inserir Dados Manualmente")
-    num_pessoas = st.number_input("Número de pessoas", min_value=2, max_value=1000, value=10)
-    
-    rendas = []
-    for i in range(int(num_pessoas)):
-        renda = st.number_input(f"Renda da pessoa {i+1}", min_value=0.0, value=1420.0, key=f"renda_{i}")
-        rendas.append(renda)
-    
-    if st.button("Criar DataFrame"):
-        df = pd.DataFrame({'Renda': rendas})
         
 elif option == "Upload de arquivo":
     st.subheader("Upload de Arquivo")
@@ -53,7 +41,7 @@ elif option == "Upload de arquivo":
     st.info("""
     **Instruções para upload de arquivo:**
     - O arquivo deve ser Excel (.xlsx) ou CSV (.csv)
-    - Deve conter uma coluna chamada **'Renda'** ou **'renda'** (aceita maiúsculas ou minúsculas)
+    - Deve conter uma coluna chamada **'Renda'** ou **'renda'**
     - A coluna 'Renda' deve conter valores numéricos
     - Cada linha representa uma pessoa/observação
     - Valores não numéricos serão ignorados
@@ -175,7 +163,6 @@ if df is not None:
     
     st.subheader("Curva de Lorenz")
     
-    # Gera o grafico - Curva de Lorenz
     populacao_acumulada = [0] + df_calc['População Acumulada'].tolist()
     renda_acumulada = [0] + df_calc['Renda Acumulada Proporcional'].tolist()
     
@@ -206,7 +193,6 @@ if df is not None:
     
     st.pyplot(fig)
     
-    # Interpretação do gráfico
     st.markdown("""
     **Interpretação da Curva de Lorenz:**
     - **Linha vermelha tracejada**: Igualdade perfeita (se todos tivessem a mesma renda)
