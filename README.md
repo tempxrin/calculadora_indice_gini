@@ -10,8 +10,7 @@ Esta ferramenta permite calcular o índice de Gini, uma medida estatística de d
 
 ### Entrada de Dados
 - **Dados de exemplo**: 1000 observações fictícias com distribuição realista de renda brasileira
-- **Entrada manual**: Interface para inserir dados individualmente
-- **Upload de arquivo**: Suporte para arquivos Excel (.xlsx) e CSV (.csv)
+- **Upload de arquivo**: Suporte para arquivos Excel (.xlsx, .xls) e CSV (.csv)
 
 ### Análises Disponíveis
 - Cálculo do Coeficiente de Gini
